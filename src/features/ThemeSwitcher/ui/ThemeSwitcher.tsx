@@ -8,7 +8,7 @@ export default function ThemeSwitcher() {
 
     return (
         <div className={styles.themeSwitcherWrapper}>
-            <p className="">Переключить тему:</p>
+            <p>Переключить тему:</p>
             <Button onClick={toggleTheme} 
                     textValue={theme === 'light' ? '☀️' : '🌙'} 
                     className={styles.themeSwitcherButton}/>

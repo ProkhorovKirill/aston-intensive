@@ -2,4 +2,5 @@
     display: flex;
     justify-content: center;
     gap: 50px;
+    border-bottom: 3px solid var(--border-color);
 }
