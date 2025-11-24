@@ -1,0 +1,16 @@
+.postCard {
+    max-width: 500px;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 30px auto 0;
+    text-align: center;
+}
+
+.postCardTitle {
+    font-size: 26px;
+}
+
+.postCardBody {
+    font-size: 22px;
+}
