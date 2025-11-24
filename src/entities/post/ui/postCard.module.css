@@ -1,6 +1,6 @@
 .postCard {
     max-width: 500px;
-    border: 1px solid black;
+    border: 2px solid var(--border-color);
     border-radius: 15px;
     padding: 15px;
     margin: 30px auto 0;
