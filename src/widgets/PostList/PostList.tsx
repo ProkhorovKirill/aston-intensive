@@ -10,17 +10,17 @@ export default function PostList() {
 
     return (
         <>
-            {isLoading && <h2 className={styles.centralTitle}>Загрузка постов</h2>}
+            {isLoading && !error && <h2 className={styles.centralTitle}>Загрузка постов</h2>}
 
             {error && <h2 className={styles.centralTitle}>Произошла ошибка! Попробуйте позже.</h2>}
             
-            <ul className={styles.postList}>
-                {posts && posts.map((post: Post) => {
+            {posts && <ul className={styles.postList}>
+                {posts.map((post: Post) => {
                     return <li key={post.id}>
                         <PostCard postInfo={post}/>
                     </li>
                 })}
-            </ul>
+            </ul>}
         </>
     )
 
