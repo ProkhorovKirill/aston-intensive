@@ -12,7 +12,7 @@ function App() {
         <ThemeProvider>
             <Header/>
             <h1 className={styles.centralTitle}>Лента новостей</h1>
-            {/* <PostList /> */}
+            <PostList />
         </ThemeProvider>
       </>
 
