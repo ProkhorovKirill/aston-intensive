@@ -1,6 +1,22 @@
 .header {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 50px;
     border-bottom: 3px solid var(--border-color);
+    padding: 20px;
+}
+
+.modalButton {
+    background-color: chartreuse;
+    border: none;
+    border-radius: 25px;
+    padding: 15px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.modalButton:hover {
+    background-color: rgb(157, 255, 60);
+    transition: all 0.3s ease;
 }

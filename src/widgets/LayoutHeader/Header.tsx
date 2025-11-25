@@ -17,10 +17,10 @@ export default function Header() {
     }
 
     return (
-        
+
         <header className={styles.header}>
             <ThemeSwitcher/>
-            <Button onClick={handleIsOpen} className="" textValue="Информация о проекте"/>
+            <Button onClick={handleIsOpen} className={styles.modalButton} textValue="Информация о проекте"/>
             <Modal isOpen={isOpen} onClose={closeModal} />
         </header>
     )

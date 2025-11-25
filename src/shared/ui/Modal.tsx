@@ -29,7 +29,7 @@ export default function Modal({isOpen, onClose} : ModalProps) {
 
                         В рамках данного проекта реализована лента новостей, которая демонстрирует базовые принципы взаимодействия клиентской части с внешним источником данных. Информация для отображения загружается из публичного тестового API, что позволяет имитировать работу с реальным сервером.
                     </p>
-                    <Button onClick={onClose} className="" textValue="Закрыть"/>
+                    <Button onClick={onClose} className={styles.closeModalButton} textValue="Закрыть"/>
                 </div>
         </div>,
         modal
