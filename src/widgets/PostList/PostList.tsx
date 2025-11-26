@@ -41,7 +41,7 @@ export default function PostListContainer() {
 
     useEffect(() => {
         
-        if (debouncedSymbolCount && !isLoading) {
+        if (debouncedSymbolCount && !isLoading && !error) {
             setPostList(filterPostsByLength(posts, debouncedSymbolCount || 1000));
         } else if (!isLoading) {
             setPostList(posts);
