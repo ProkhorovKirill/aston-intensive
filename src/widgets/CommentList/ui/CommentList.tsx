@@ -42,8 +42,6 @@ export default function CommentListContainer() {
         setIsOpen(prev => !prev);
     }, [isOpen]);
 
-    console.log(comments)
-
     return (
 
         <>

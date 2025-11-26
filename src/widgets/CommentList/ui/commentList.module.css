@@ -9,6 +9,7 @@
     border: none;
     font-size: 22px;
     cursor: pointer;
+    color: var(--text-color)
 }
 
 .toggleCommentsButton:hover {
