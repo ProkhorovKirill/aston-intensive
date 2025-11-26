@@ -4,14 +4,12 @@ import type { Post } from '../../entities/post/model/interfaces';
 import PostCard from '../../entities/post/ui/PostCard';
 import styles from './postList.module.css'
 import React from 'react';
+import WithLoading from '../../shared/lib/hoc/withLoading';
 
-export default function PostList() {
-
-    const {data: posts, error, isLoading}: UseGetPostsQueryResult = useGetPostsQuery('');
+function PostList({posts, error} : {posts: Post[], error: any}) {
 
     return (
         <>
-            {isLoading && !error && <h2 className={styles.centralTitle}>Загрузка постов</h2>}
 
             {error && <h2 className={styles.centralTitle}>Произошла ошибка! Попробуйте позже.</h2>}
             
@@ -22,7 +20,27 @@ export default function PostList() {
                             </React.Fragment>
                 })}
             </div>}
+            
         </>
     )
+
+}
+
+const PostListWithLoading = WithLoading(PostList);
+
+export default function PostListContainer() {
+
+    const {data: posts, error, isLoading}: UseGetPostsQueryResult = useGetPostsQuery('');
+    
+    return (
+
+        <PostListWithLoading 
+            isLoading={isLoading}
+            className={styles.centralTitle}
+            posts={posts}
+            error={error}
+        />
+
+    );
 
 }
