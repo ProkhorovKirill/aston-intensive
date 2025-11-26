@@ -4,7 +4,7 @@ import styles from '..//shared/ui/shared.module.css';
 import ThemeProvider from '../shared/lib/theme/ThemeProvider';
 import Header from '../widgets/LayoutHeader/Header';
 import CommentListConatiner from '../widgets/CommentList/ui/CommentList';
-
+import PostLengthFilter from '../features/PostLengthFilter/ui/PostLengthFilter';
 
 function App() {
 
@@ -15,7 +15,9 @@ function App() {
             <Header/>
         </ThemeProvider>
         <h1 className={styles.centralTitle}>Лента новостей</h1>
-        <PostListContainer />
+        <PostLengthFilter>
+            <PostListContainer />
+        </PostLengthFilter>
         <CommentListConatiner />
       </>
 
