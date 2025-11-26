@@ -5,7 +5,13 @@ export const postsListApi = createApi({
     baseQuery: fetchBaseQuery({baseUrl: 'https://jsonplaceholder.typicode.com/'}),
     endpoints: (build) => ({
         getPosts: build.query({
-            query: () => 'posts',
+            query: (params: {_limit: number, _page: number}) => ({
+                url: 'posts',
+                params: {
+                    _limit: params._limit || 5,
+                    _page: params._page || 1,
+                }
+            }),
         }),
     }),
 })

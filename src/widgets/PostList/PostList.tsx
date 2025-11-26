@@ -20,7 +20,7 @@ function PostList({posts, error} : {posts: Post[], error: any}) {
                             </React.Fragment>
                 })}
             </div>}
-            
+
         </>
     )
 
@@ -30,7 +30,7 @@ const PostListWithLoading = WithLoading(PostList);
 
 export default function PostListContainer() {
 
-    const {data: posts, error, isLoading}: UseGetPostsQueryResult = useGetPostsQuery('');
+    const {data: posts, error, isLoading}: UseGetPostsQueryResult = useGetPostsQuery({_limit: 5, _page: 1});
     
     return (
 
