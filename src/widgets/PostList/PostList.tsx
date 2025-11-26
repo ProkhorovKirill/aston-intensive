@@ -4,7 +4,7 @@ import type { Post } from '../../entities/post/model/interfaces';
 import PostCard from '../../entities/post/ui/PostCard';
 import styles from './postList.module.css'
 import sharedStyles from '../../shared/ui/shared.module.css'
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import WithLoading from '../../shared/lib/hoc/withLoading';
 import useFilterByLength from '../../shared/lib/filterByLength/useFilterByLength';
 
@@ -39,25 +39,49 @@ export default function PostListContainer() {
 
     const {debouncedSymbolCount, filterPostsByLength} = useFilterByLength();
 
-    useEffect(() => {
-        
-        if (debouncedSymbolCount && !isLoading && !error) {
-            setPostList(filterPostsByLength(posts, debouncedSymbolCount || 1000));
-        } else if (!isLoading) {
-            setPostList(posts);
-        } else return
+    const filteredPosts = useMemo(() => {
 
-    }, [debouncedSymbolCount, isLoading])
+        if (debouncedSymbolCount && !isLoading && posts) {
+
+            return filterPostsByLength(posts, debouncedSymbolCount || 1000);
+
+        }
+
+        return posts;
+
+    }, [debouncedSymbolCount, isLoading, posts, filterPostsByLength]);
+
+    const updatePostList = useCallback((newPosts: Post[] | undefined) => {
+
+        setPostList(newPosts);
+
+    }, []);
+
+    useEffect(() => {
+
+        if (debouncedSymbolCount && !isLoading) {
+            updatePostList(filteredPosts);
+        } else if (!isLoading) {
+            updatePostList(posts);
+        }
+
+    }, [debouncedSymbolCount, isLoading, filteredPosts, posts, updatePostList])
+
+    const postListProps = useMemo(() => ({
+
+        isLoading,
+        className: sharedStyles.centralTitle,
+        posts: postList,
+        error
+
+    }), [isLoading, postList, error]);
 
     return (
 
         <>
-            { <PostListWithLoading 
-                isLoading={isLoading}
-                className={sharedStyles.centralTitle}
-                posts={postList}
-                error={error}
-            />}
+
+            <PostListWithLoading {...postListProps} />
+
         </>
 
     );
