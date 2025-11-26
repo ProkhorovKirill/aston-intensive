@@ -3,6 +3,7 @@ import type { UseGetPostsQueryResult } from './model/interfaces'
 import type { Post } from '../../entities/post/model/interfaces';
 import PostCard from '../../entities/post/ui/PostCard';
 import styles from './postList.module.css'
+import sharedStyles from '../../shared/ui/shared.module.css'
 import React from 'react';
 import WithLoading from '../../shared/lib/hoc/withLoading';
 
@@ -11,7 +12,7 @@ function PostList({posts, error} : {posts: Post[], error: any}) {
     return (
         <>
 
-            {error && <h2 className={styles.centralTitle}>Произошла ошибка! Попробуйте позже.</h2>}
+            {error && <h2 className={sharedStyles.centralTitle}>Произошла ошибка! Попробуйте позже.</h2>}
             
             {posts && <div className={styles.postList}>
                 {posts.map((post: Post) => {
@@ -36,7 +37,7 @@ export default function PostListContainer() {
 
         <PostListWithLoading 
             isLoading={isLoading}
-            className={styles.centralTitle}
+            className={sharedStyles.centralTitle}
             posts={posts}
             error={error}
         />

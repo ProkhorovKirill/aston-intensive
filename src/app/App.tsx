@@ -1,8 +1,10 @@
 import './App.css';
 import PostListContainer from '../widgets/PostList/PostList';
-import styles from '../widgets/PostList/postList.module.css';
+import styles from '..//shared/ui/shared.module.css';
 import ThemeProvider from '../shared/lib/theme/ThemeProvider';
 import Header from '../widgets/LayoutHeader/Header';
+import CommentListConatiner from '../widgets/CommentList/ui/CommentList';
+
 
 function App() {
 
@@ -11,9 +13,10 @@ function App() {
       <>
         <ThemeProvider>
             <Header/>
-            <h1 className={styles.centralTitle}>Лента новостей</h1>
-            <PostListContainer />
         </ThemeProvider>
+        <h1 className={styles.centralTitle}>Лента новостей</h1>
+        <PostListContainer />
+        <CommentListConatiner />
       </>
 
   )

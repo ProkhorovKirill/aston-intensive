@@ -12,7 +12,7 @@ export default function WithLoading(WrappedComponent : React.FC<any>) {
 
             <>
 
-                {isLoading && <h2 className={className}>Загрузка постов</h2>}
+                {isLoading && <h2 className={className}>Загрузка! Пожалуйста, подождите!</h2>}
 
                 {!isLoading && <WrappedComponent {...props}/>}
 
