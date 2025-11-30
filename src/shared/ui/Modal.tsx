@@ -1,15 +1,18 @@
 import ReactDOM from 'react-dom';
 import styles from './modal.module.css'
-import Button from "./Button";
+import useScrollLock from '../lib/scrollLock/useScrollLock';
 
 interface ModalProps {
     isOpen: boolean,
     onClose: () => void,
+    children: React.ReactNode,
 }
 
-export default function Modal({isOpen, onClose} : ModalProps) {
+export default function Modal({isOpen, onClose, children} : ModalProps) {
 
     const modal = document.getElementById('portal-root');
+
+    useScrollLock(isOpen);
 
     if (!isOpen || !modal) {
         return null;
@@ -22,17 +25,26 @@ export default function Modal({isOpen, onClose} : ModalProps) {
     return ReactDOM.createPortal(
         <div className={styles.modalOverlay} onClick={handleOverlayCLick}>
             <div className={styles.modalWindow}>
-                    <p>
-                        Добро пожаловать в мой учебный проект!
-
-                        Это веб-приложение было разработано в образовательных целях для отработки практических навыков работы с современными веб-технологиями.
-
-                        В рамках данного проекта реализована лента новостей, которая демонстрирует базовые принципы взаимодействия клиентской части с внешним источником данных. Информация для отображения загружается из публичного тестового API, что позволяет имитировать работу с реальным сервером.
-                    </p>
-                    <Button onClick={onClose} className={styles.closeModalButton} textValue="Закрыть"/>
-                </div>
+                {children}        
+            </div>
         </div>,
         modal
     )
 
+}
+
+interface SubcomponentsProps {
+    children: React.ReactNode,
+}
+
+Modal.Header = function ModalHeader({children} : SubcomponentsProps) {
+    return <div>{children}</div>
+}
+
+Modal.Body = function ModalBody({children} : SubcomponentsProps) {
+    return <div>{children}</div>
+}
+
+Modal.Footer = function ModalFooter({children} : SubcomponentsProps) {
+    return <div>{children}</div>
 }
