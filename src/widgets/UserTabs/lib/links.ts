@@ -29,7 +29,7 @@ export const links: Links = [
     },
     {
         to: 'users/:id/posts',
-        text: 'Посты пользотвателя',
+        text: 'Посты пользователя',
         id: 4,
     },
     {

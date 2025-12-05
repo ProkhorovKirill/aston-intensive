@@ -27,10 +27,15 @@ export const postsListApi = createApi({
                 }
             })
         }),
-
         getPost: build.query({
             query: (id: number) => ({
                 url: `posts/${id}`,
+            })
+        }),
+
+        getAlbums: build.query({
+            query: (id: number) => ({
+                url: `users/${id}/albums`,
             })
         }),
 
@@ -41,4 +46,5 @@ export const {
     useGetPostsQuery, 
     useGetCommentsQuery,
     useGetPostQuery,
+    useGetAlbumsQuery,
 } = postsListApi;
