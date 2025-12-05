@@ -26,8 +26,19 @@ export const postsListApi = createApi({
                     _page: params._page || 1,
                 }
             })
-        })
+        }),
+
+        getPost: build.query({
+            query: (id: number) => ({
+                url: `posts/${id}`,
+            })
+        }),
+
     }),
 })
 
-export const {useGetPostsQuery, useGetCommentsQuery} = postsListApi;
+export const {
+    useGetPostsQuery, 
+    useGetCommentsQuery,
+    useGetPostQuery,
+} = postsListApi;
