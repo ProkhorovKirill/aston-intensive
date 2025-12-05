@@ -1,3 +1,4 @@
-.centralTitle {
-    text-align: center;
+.centralLink {
+    display: flex;
+    justify-content: center;
 }

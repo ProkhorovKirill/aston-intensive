@@ -1,3 +1,16 @@
 .centralTitle {
     text-align: center;
 }
+
+.Link {
+    display: block;
+    text-align: center;
+    font-size: 22px;
+    text-decoration: none;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    width: fit-content;
+    color: var(--text-color);
+    margin-top: 20px;
+}
