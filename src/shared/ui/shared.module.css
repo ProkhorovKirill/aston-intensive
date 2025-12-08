@@ -29,3 +29,25 @@
     color: var(--text-color);
     margin-top: 20px;
 }
+
+.linksWrapper {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.itemsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.Item {
+    max-width: 500px;
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 0;
+}

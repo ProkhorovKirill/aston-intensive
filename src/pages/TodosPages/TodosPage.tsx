@@ -1,16 +1,16 @@
 import { NavLink, useParams } from "react-router-dom";
-import albums from "./lib/links";
+import todos from './lib/links';
 import { useCallback, useMemo } from "react";
-import AlbumItem from "./AlbumItem";
 import sharedStyles from '../../shared/ui/shared.module.css';
-// import styles from './albumsPage.module.css'
+// import styles from './albumsPage.module.css';
+import TodosItem from "./TodosItem";
 
-export default function AlbumPage() {
+export default function TodosPage() {
 
     const params = useParams();
 
-    const albumsList = useMemo(() => {
-        return albums
+    const todosList = useMemo(() => {
+        return todos
     }, [])
 
     const getNavLinkClassName = useCallback(
@@ -20,17 +20,16 @@ export default function AlbumPage() {
     return (
         <>
             <div className={sharedStyles.linksWrapper}>
-                {albumsList.map((album) => {
-                    return <p key={album.id}>
-                                <NavLink to={album.to} className={getNavLinkClassName}>
-                                    {album.text}
+                {todosList.map((todo) => {
+                    return <p key={todo.id}>
+                                <NavLink to={todo.to} className={getNavLinkClassName}>
+                                    {todo.text}
                                 </NavLink>
                             </p>    
                 })}
             </div>
             
-            {!isNaN(Number(params.id)) && <AlbumItem id={Number(params.id)}/>}
-
+            {!isNaN(Number(params.id)) && <TodosItem id={Number(params.id)}/>}
         </>
     )
 

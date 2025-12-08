@@ -3,6 +3,7 @@ import MainLayout from "../../../shared/layouts/MainLayout";
 import PostListPage from "../../../pages/PostListPage/PostListPage";
 import PostPage from "../../../pages/PostPage/PostPage";
 import AlbumsPage from "../../../pages/AlbumsPage/AlbumsPage";
+import TodosPage from "../../../pages/TodosPages/TodosPage";
 
 export const router = createBrowserRouter([
     {
@@ -26,7 +27,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'users/:id/todos',
-                element: <h2>users/:id/todos</h2>,
+                element: <TodosPage />,
                 errorElement: <h2>error</h2>
             },
             {

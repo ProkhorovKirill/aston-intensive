@@ -1,7 +1,7 @@
 import { useGetAlbumsQuery } from "../../widgets/PostList/api/postsListApi";
 import { useMemo } from "react";
 import type { Album } from "./model/interfaces";
-import styles from './albumsPage.module.css';
+// import styles from './albumsPage.module.css';
 import sharedStyles from '../../shared/ui/shared.module.css'
 
 export default function AlbumItem ({id} : {id: number}) {
@@ -13,9 +13,9 @@ export default function AlbumItem ({id} : {id: number}) {
         if (!albums?.length) return null
 
         return (
-            !isLoading && <div className={styles.albumsWrapper}>
+            !isLoading && <div className={sharedStyles.itemsWrapper}>
                 {albums.map((album: Album) => (
-                    <p key={album.id} className={styles.albumItem}>{album.title}</p>
+                    <p key={album.id} className={sharedStyles.Item}>{album.title}</p>
                 ))}
             </div>
         )
