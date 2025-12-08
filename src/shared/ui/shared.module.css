@@ -1,3 +1,53 @@
 .centralTitle {
     text-align: center;
 }
+
+.Link {
+    display: block;
+    text-align: center;
+    font-size: 22px;
+    text-decoration: none;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    width: fit-content;
+    color: var(--text-color);
+    margin-top: 20px;
+}
+
+.activeLink {
+    display: block;
+    text-align: center;
+    font-size: 22px;
+    text-decoration: none;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    background-color: aquamarine;
+    text-decoration: underline;
+    border-radius: 25px;
+    width: fit-content;
+    color: var(--text-color);
+    margin-top: 20px;
+}
+
+.linksWrapper {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.itemsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.Item {
+    max-width: 500px;
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 0;
+}

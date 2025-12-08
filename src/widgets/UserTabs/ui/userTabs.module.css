@@ -1,0 +1,7 @@
+.userTabsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 20px;
+    justify-content: center;
+}

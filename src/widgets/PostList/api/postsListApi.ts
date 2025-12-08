@@ -9,6 +9,7 @@ export const postsListApi = createApi({
     reducerPath: 'postsApi',
     baseQuery: fetchBaseQuery({baseUrl: 'https://jsonplaceholder.typicode.com/'}),
     endpoints: (build) => ({
+
         getPosts: build.query({
             query: (params: DefaultQueryParams) => ({
                 url: 'posts',
@@ -18,6 +19,7 @@ export const postsListApi = createApi({
                 }
             }),
         }),
+
         getComments: build.query({
             query: (params: DefaultQueryParams) => ({
                 url: 'comments',
@@ -26,8 +28,51 @@ export const postsListApi = createApi({
                     _page: params._page || 1,
                 }
             })
-        })
+        }),
+        
+        getPost: build.query({
+            query: (id: number) => ({
+                url: `posts/${id}`,
+            })
+        }),
+
+        getAlbums: build.query({
+            query: (id: number) => ({
+                url: `users/${id}/albums`,
+            })
+        }),
+
+        getTodos: build.query({
+            query: (id: number) => ({
+                url: `users/${id}/todos`,
+            })
+        }),
+
+        getUserPosts: build.query({
+            query: (id: number) => ({
+                url: `users/${id}/posts`,
+            })
+        }),
+
+        getPhotos: build.query({
+            query: (id: number) => ({
+                url: `albums/${id}/photos`,
+                params: {
+                    _limit: 10,
+                    _page: 1,
+                }
+            })
+        }),
+
     }),
 })
 
-export const {useGetPostsQuery, useGetCommentsQuery} = postsListApi;
+export const {
+    useGetPostsQuery, 
+    useGetCommentsQuery,
+    useGetPostQuery,
+    useGetAlbumsQuery,
+    useGetTodosQuery,
+    useGetUserPostsQuery,
+    useGetPhotosQuery,
+} = postsListApi;
