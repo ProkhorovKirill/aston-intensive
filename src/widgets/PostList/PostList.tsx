@@ -1,12 +1,12 @@
-import { useGetPostsQuery } from './api/postsListApi'
-import type { UseGetPostsQueryResult } from './model/interfaces'
+import type { UseGetPostsQueryResult } from './model/interfaces';
 import type { Post } from '../../entities/post/model/interfaces';
 import PostCard from '../../entities/post/ui/PostCard';
-import styles from './postList.module.css'
-import sharedStyles from '../../shared/ui/shared.module.css'
+import styles from './postList.module.css';
+import sharedStyles from '../../shared/ui/shared.module.css';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import WithLoading from '../../shared/lib/hoc/withLoading';
 import useFilterByLength from '../../shared/lib/filterByLength/useFilterByLength';
+import usePosts from '../../features/PostList/model/hooks/usePosts';
 
 function PostList({posts, error} : {posts: Post[], error: any}) {
 
@@ -33,7 +33,7 @@ const PostListWithLoading = WithLoading(PostList);
 
 export default function PostListContainer() {
 
-    let {data: posts, error, isLoading}: UseGetPostsQueryResult = useGetPostsQuery({_limit: 5, _page: 1});
+    let {data: posts, error, isLoading}: UseGetPostsQueryResult = usePosts();
     
     const [postList, setPostList] = useState(posts);
 
