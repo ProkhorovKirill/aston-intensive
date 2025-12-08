@@ -4,6 +4,7 @@ import PostListPage from "../../../pages/PostListPage/PostListPage";
 import PostPage from "../../../pages/PostPage/PostPage";
 import AlbumsPage from "../../../pages/AlbumsPage/AlbumsPage";
 import TodosPage from "../../../pages/TodosPages/TodosPage";
+import UserPostsPage from "../../../pages/UserPostsPage/UserPostsPage";
 
 export const router = createBrowserRouter([
     {
@@ -32,7 +33,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'users/:id/posts',
-                element: <h2>users/:id/posts</h2>,
+                element: <UserPostsPage />,
                 errorElement: <h2>error</h2>
             },
             {

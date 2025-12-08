@@ -1,15 +1,15 @@
 import { NavLink, useParams } from "react-router-dom";
-import todos from './lib/links';
+import userPosts from './lib/links';
 import { useCallback, useMemo } from "react";
 import sharedStyles from '../../shared/ui/shared.module.css';
-import TodosItem from "./TodosItem";
+import UserPostsItem from "./UserPostsItem";
 
-export default function TodosPage() {
+export default function UserPostsPage() {
 
     const params = useParams();
 
-    const todosList = useMemo(() => {
-        return todos
+    const UserPostsList = useMemo(() => {
+        return userPosts
     }, [])
 
     const getNavLinkClassName = useCallback(
@@ -19,16 +19,16 @@ export default function TodosPage() {
     return (
         <>
             <div className={sharedStyles.linksWrapper}>
-                {todosList.map((todo) => {
-                    return <p key={todo.id}>
-                                <NavLink to={todo.to} className={getNavLinkClassName}>
-                                    {todo.text}
+                {UserPostsList.map((userPost) => {
+                    return <p key={userPost.id}>
+                                <NavLink to={userPost.to} className={getNavLinkClassName}>
+                                    {userPost.text}
                                 </NavLink>
                             </p>    
                 })}
             </div>
             
-            {!isNaN(Number(params.id)) && <TodosItem id={Number(params.id)}/>}
+            {!isNaN(Number(params.id)) && <UserPostsItem id={Number(params.id)}/>}
         </>
     )
 
