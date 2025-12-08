@@ -1,0 +1,32 @@
+.albumsWrapper {
+    max-width: 500px;
+    margin: 50px auto;
+}
+
+.albumItem {
+    font-size: 22px;
+    font-style: italic;
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    padding: 20px;
+    
+}
+
+.getUserIDWrapper {
+    max-width: 600px;
+    margin: 50px auto;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.getUserIDLabel {
+    display: block;
+}
+
+.getUserIDInput {
+    max-width: 50px;
+    font-size: 20px;
+    margin-left: 10px;
+}

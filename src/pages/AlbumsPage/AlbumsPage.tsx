@@ -1,7 +1,8 @@
 import { useCallback, useMemo, useState } from "react";
 import { useGetAlbumsQuery } from "../../widgets/PostList/api/postsListApi";
 import sharedStyles from '../../shared/ui/shared.module.css';
-import type { Album, AlbumList } from "./model/interfaces";
+import type { Album } from "./model/interfaces";
+import styles from './albumsPage.module.css';
 
 export default function AlbumsPage() {
 
@@ -15,7 +16,7 @@ export default function AlbumsPage() {
         
     }, [userId]);
 
-    const {data: albumsList, error, isLoading} = useGetAlbumsQuery(Number(userId), {
+    const {data: albumsList, error, isLoading} = useGetAlbumsQuery(numericUserId!, {
         skip: !numericUserId,
     });
 
@@ -42,12 +43,12 @@ export default function AlbumsPage() {
 
     const albums = useMemo(() => {
         
-        if (!albumsList) return
+        if (!albumsList?.length) return null
 
         return (
-            <div>
+            <div className={styles.albumsWrapper}>
                 {albumsList.map((album: Album) => (
-                    <p key={album.id}>{album.title}</p>
+                    <p key={album.id} className={styles.albumItem}>{album.title}</p>
                 ))}
             </div>
         )
@@ -57,23 +58,25 @@ export default function AlbumsPage() {
     return (
 
         <>
-            <label htmlFor="userId">
-                Введите ID пользователя (от 1 до 10)
-                <input 
-                    type="number" 
-                    value={userId} 
-                    onChange={handleChangeUserId}
-                    name="userId"
-                    id="userId"
-                    /> 
+            <div className={styles.getUserIDWrapper}>
+                <label htmlFor="userId" className={styles.getUserIDLabel}>
+                    Введите ID пользователя (от 1 до 10)
+                    <input
+                        type="number"
+                        value={userId}
+                        onChange={handleChangeUserId}
+                        name="userId"
+                        id="userId"
+                        className={styles.getUserIDInput}
+                    />
                 </label>
+            </div>
 
                 {isLoading && <h2 className={sharedStyles.centralTitle}>Загрузка</h2>}
 
                 {error && <h2 className={sharedStyles.centralTitle}>Ошибка</h2>}
 
-                {albums}
-
+                {!isLoading && !error && albums}
 
         </>
 

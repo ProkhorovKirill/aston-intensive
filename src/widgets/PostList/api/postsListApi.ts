@@ -9,6 +9,7 @@ export const postsListApi = createApi({
     reducerPath: 'postsApi',
     baseQuery: fetchBaseQuery({baseUrl: 'https://jsonplaceholder.typicode.com/'}),
     endpoints: (build) => ({
+
         getPosts: build.query({
             query: (params: DefaultQueryParams) => ({
                 url: 'posts',
@@ -18,6 +19,7 @@ export const postsListApi = createApi({
                 }
             }),
         }),
+
         getComments: build.query({
             query: (params: DefaultQueryParams) => ({
                 url: 'comments',
@@ -27,6 +29,7 @@ export const postsListApi = createApi({
                 }
             })
         }),
+        
         getPost: build.query({
             query: (id: number) => ({
                 url: `posts/${id}`,
