@@ -1,32 +1,21 @@
+.linksWrapper {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
 .albumsWrapper {
-    max-width: 500px;
-    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
 }
 
 .albumItem {
-    font-size: 22px;
-    font-style: italic;
+    max-width: 500px;
     border: 1px solid var(--border-color);
     border-radius: 15px;
     padding: 20px;
-    
-}
-
-.getUserIDWrapper {
-    max-width: 600px;
-    margin: 50px auto;
-    font-size: 24px;
-    display: flex;
-    justify-content: center;
-    
-}
-
-.getUserIDLabel {
-    display: block;
-}
-
-.getUserIDInput {
-    max-width: 50px;
-    font-size: 20px;
-    margin-left: 10px;
+    margin: 0;
 }
