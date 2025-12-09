@@ -1,14 +1,12 @@
 import './App.css'
-import PostList from '../widgets/PostList/PostList'
-import styles from '../widgets/PostList/postList.module.css'
+import MainLayout from '../shared/layouts/MainLayout'
 
 function App() {
 
   return (
 
       <>
-        <h1 className={styles.centralTitle}>Лента новостей</h1>
-        <PostList />
+        <MainLayout />
       </>
 
   )
