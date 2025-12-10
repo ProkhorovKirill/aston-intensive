@@ -9,10 +9,9 @@ function App() {
   return (
 
       <>
-      <ThemeProvider>
-        <Header/>
-      </ThemeProvider>
-      <RouterProvider router={router} />
+
+        <RouterProvider router={router} />
+        
       </>
 
   )
