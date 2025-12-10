@@ -1,0 +1,21 @@
+.themeSwitcherButton {
+    font-size: 22px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+
+.themeSwitcherButton:hover {
+    border: 1px solid var(--border-color);
+    background-color: rgb(82, 82, 82);
+    border-radius: 50%;
+}
+
+.themeSwitcherWrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 22px;
+}
