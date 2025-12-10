@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { postsListApi } from "../../widgets/PostList/api/postsListApi";
+import { postsListApi } from "../../../widgets/PostList/api/postsListApi";
 
 export const postsStore = configureStore({
     reducer: {
