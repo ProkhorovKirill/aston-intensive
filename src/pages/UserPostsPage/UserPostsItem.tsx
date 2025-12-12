@@ -1,11 +1,11 @@
-import { useGetUserPostsQuery } from "../../widgets/PostList/api/postsListApi";
+import { useGetPostsByUserIdQuery } from "../../entities/posts/api/postsApi";
 import { useMemo } from "react";
 import sharedStyles from '../../shared/ui/shared.module.css';
 import type { UserPost } from "./model/interfaces";
 
 export default function UserPostsItem ({id} : {id: number}) {
 
-    const {data: userPost, isFetching, error, isLoading} = useGetUserPostsQuery(id);
+    const {data: userPost, isFetching, error, isLoading} = useGetPostsByUserIdQuery(id);
     
     const userPostList = useMemo(() => {
         

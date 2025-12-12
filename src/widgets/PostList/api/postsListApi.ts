@@ -1,4 +1,5 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { baseUrl } from '../../../shared/lib/baseURL/baseURL';
 
 interface DefaultQueryParams {
     _limit: number,
@@ -7,18 +8,8 @@ interface DefaultQueryParams {
 
 export const postsListApi = createApi({
     reducerPath: 'postsApi',
-    baseQuery: fetchBaseQuery({baseUrl: 'https://jsonplaceholder.typicode.com/'}),
+    baseQuery: fetchBaseQuery({baseUrl}),
     endpoints: (build) => ({
-
-        getPosts: build.query({
-            query: (params: DefaultQueryParams) => ({
-                url: 'posts',
-                params: {
-                    _limit: params._limit || 5,
-                    _page: params._page || 1,
-                }
-            }),
-        }),
 
         getComments: build.query({
             query: (params: DefaultQueryParams) => ({
@@ -27,12 +18,6 @@ export const postsListApi = createApi({
                     _limit: params._limit || 5,
                     _page: params._page || 1,
                 }
-            })
-        }),
-        
-        getPost: build.query({
-            query: (id: number) => ({
-                url: `posts/${id}`,
             })
         }),
 
@@ -45,12 +30,6 @@ export const postsListApi = createApi({
         getTodos: build.query({
             query: (id: number) => ({
                 url: `users/${id}/todos`,
-            })
-        }),
-
-        getUserPosts: build.query({
-            query: (id: number) => ({
-                url: `users/${id}/posts`,
             })
         }),
 
@@ -68,11 +47,8 @@ export const postsListApi = createApi({
 })
 
 export const {
-    useGetPostsQuery, 
     useGetCommentsQuery,
-    useGetPostQuery,
     useGetAlbumsQuery,
     useGetTodosQuery,
-    useGetUserPostsQuery,
     useGetPhotosQuery,
 } = postsListApi;
