@@ -23,7 +23,7 @@ export const postsApi = createApi({
             providesTags: (result) => {
                 return result ? [...result.map(({id} : {id: string}) => 
                     ({ type: 'Post', id })), { type: 'Post', id: 'LIST'},]
-                : [{type: 'Post', id: 'LIST'}]
+                : [{type: 'Post', id: 'POSTS_LIST'}]
             }
         }),
 
@@ -40,7 +40,7 @@ export const postsApi = createApi({
                 url: `users/${id}/posts`,
             }),
             providesTags: (result, error, id) => result && !error ? 
-                            [{type: 'UserPosts', id}, {type: "Post", id: 'LIST'}] : [],
+                            [{type: 'UserPosts', id}, {type: "Post", id: 'POSTS_LIST'}] : [],
         }),
 
         addPost: build.mutation({
@@ -50,7 +50,7 @@ export const postsApi = createApi({
                 body: newPost,
             }),
             invalidatesTags: (result, error) => result && !error ? 
-                            [{type: 'Post', id: 'LIST'}] : []
+                            [{type: 'Post', id: 'POSTS_LIST'}] : []
         }),
 
         updatePost: build.mutation({
@@ -61,7 +61,7 @@ export const postsApi = createApi({
             }),
             invalidatesTags: (result, error, id) => result && !error ? 
                             [{type: 'Post', id}, {type: 'Post', id: 'LIST'}] : 
-                            [{type: 'Post', id: 'LIST'}]
+                            [{type: 'Post', id: 'POSTS_LIST'}]
         })
 
     })

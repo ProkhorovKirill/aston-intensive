@@ -1,14 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import { postsListApi } from "../../../widgets/PostList/api/postsListApi";
 import { postsApi } from "../../../entities/posts/api/postsApi";
+import { commentsApi } from "../../../entities/comments/api/commentsApi";
 
 export const postsStore = configureStore({
     reducer: {
-        // [postsListApi.reducerPath]: postsListApi.reducer,
         [postsApi.reducerPath]: postsApi.reducer,
+        [commentsApi.reducerPath]: commentsApi.reducer,
     },
 
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(postsApi.middleware),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(
+        postsApi.middleware, 
+        commentsApi.middleware,
+    ),
 })
 
 
