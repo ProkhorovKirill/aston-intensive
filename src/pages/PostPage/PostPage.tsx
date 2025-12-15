@@ -6,7 +6,6 @@ import styles from './postPage.module.css'
 
 export default function PostPage() {
 
-
     const urlParams = useParams();
     const {data: post, error, isLoading} = useGetPostByIdQuery(Number(urlParams.id));
 
