@@ -1,4 +1,4 @@
-import { useGetTodosQuery } from "../../widgets/PostList/api/postsListApi";
+import { useGetTodosQuery } from "../../entities/todos/api/todosApi";
 import { useMemo } from "react";
 import sharedStyles from '../../shared/ui/shared.module.css';
 import type { Todo } from "./model/interfaces";
