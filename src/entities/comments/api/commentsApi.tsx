@@ -30,10 +30,10 @@ export const commentsApi = createApi({
         }),
 
         addComment: build.mutation({
-            query: (newComment) => ({
+            query: (newCommentData) => ({
                 url: 'comment',
                 method: 'POST',
-                body: JSON.stringify(newComment),
+                body: newCommentData,
             }),
             invalidatesTags: (result, error) => result && !error ? 
                                 [{type: 'Comment', id: 'COMMENTS_LIST'}] : []

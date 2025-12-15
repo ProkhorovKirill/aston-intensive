@@ -57,7 +57,7 @@ export const postsApi = createApi({
             query: ({id, updatedData}) => ({
                 url: `posts/${id}`,
                 method: 'PATCH',
-                body: JSON.stringify(updatedData)
+                body: updatedData
             }),
             invalidatesTags: (result, error, id) => result && !error ? 
                             [{type: 'Post', id}, {type: 'Post', id: 'LIST'}] : 

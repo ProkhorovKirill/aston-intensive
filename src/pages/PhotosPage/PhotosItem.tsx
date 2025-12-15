@@ -1,4 +1,4 @@
-import { useGetPhotosQuery } from "../../widgets/PostList/api/postsListApi";
+import { useGetPhotosQuery } from "../../entities/albums/api/albumsApi";
 import { useMemo } from "react";
 import sharedStyles from '../../shared/ui/shared.module.css';
 import type { Photo } from "./model/interfaces";
