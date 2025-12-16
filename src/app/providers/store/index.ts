@@ -5,6 +5,8 @@ import { commentsApi } from "../../../entities/comments/api/commentsApi";
 import { albumsApi } from "../../../entities/albums/api/albumsApi";
 import { todosApi } from "../../../entities/todos/api/todosApi";
 import { usersApi } from "../../../entities/user/api/usersApi";
+import postReducer from '../../../entities/posts/slice/postSlice';
+import userReducer from '../../../entities/user/model/slice/userSlice';
 
 export const store = configureStore({
     reducer: {
@@ -13,6 +15,8 @@ export const store = configureStore({
         [albumsApi.reducerPath]: albumsApi.reducer,
         [todosApi.reducerPath]: todosApi.reducer,
         [usersApi.reducerPath]: usersApi.reducer,
+        post: postReducer,
+        user: userReducer,
     },
 
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(

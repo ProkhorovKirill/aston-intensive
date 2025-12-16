@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { baseUrl } from "../../../shared/lib/baseURL/baseURL";
+import { upsertPosts } from "../slice/postSlice";
 
 interface DefaultQueryParams {
     _limit: number,
@@ -20,6 +21,14 @@ export const postsApi = createApi({
                     _page: params._page || 1,
                 }
             }),
+            async onQueryStarted(_, { dispatch, queryFulfilled }) {
+                try {
+                    const { data } = await queryFulfilled;
+                    dispatch(upsertPosts(data));
+                } catch (e: unknown) {
+                    if (e instanceof Error) console.error(e.message);
+                }
+            },
             providesTags: (result) => {
                 return result ? [...result.map(({id} : {id: string}) => 
                     ({ type: 'Post', id })), { type: 'Post', id: 'LIST'},]
@@ -40,7 +49,8 @@ export const postsApi = createApi({
                 url: `users/${id}/posts`,
             }),
             providesTags: (result, error, id) => result && !error ? 
-                            [{type: 'UserPosts', id}, {type: "Post", id: 'POSTS_LIST'}] : [],
+                            [{type: 'UserPosts', id}, 
+                            {type: "Post", id: 'POSTS_LIST'}] : [],
         }),
 
         addPost: build.mutation({
