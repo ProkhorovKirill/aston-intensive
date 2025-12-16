@@ -37,4 +37,9 @@ export const links: Links = [
         text: 'Фотографии пользователя',
         id: 5,
     },
+    {
+        to: 'users',
+        text: 'Пользователи',
+        id: 6,
+    },
 ]

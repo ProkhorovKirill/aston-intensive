@@ -1,11 +1,11 @@
-import { useGetAlbumsQuery } from "../../widgets/PostList/api/postsListApi";
+import { useGetUserAlbumsQuery } from "../../entities/albums/api/albumsApi";
 import { useMemo } from "react";
 import type { Album } from "./model/interfaces";
 import sharedStyles from '../../shared/ui/shared.module.css'
 
 export default function AlbumItem ({id} : {id: number}) {
 
-    const {data: albums, isFetching, error, isLoading} = useGetAlbumsQuery(id);
+    const {data: albums, isFetching, error, isLoading} = useGetUserAlbumsQuery(id);
 
     const albumsList = useMemo(() => {
         

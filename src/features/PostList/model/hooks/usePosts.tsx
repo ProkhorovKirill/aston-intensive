@@ -1,4 +1,4 @@
-import { useGetPostsQuery } from "../../../../widgets/PostList/api/postsListApi";
+import { useGetPostsQuery } from "../../../../entities/posts/api/postsApi";
 
 export default function usePosts() {
 
