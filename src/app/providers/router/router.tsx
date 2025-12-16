@@ -6,6 +6,7 @@ import AlbumsPage from "../../../pages/AlbumsPage/AlbumsPage";
 import TodosPage from "../../../pages/TodosPages/TodosPage";
 import UserPostsPage from "../../../pages/UserPostsPage/UserPostsPage";
 import PhotosPage from "../../../pages/PhotosPage/PhotosPage";
+import UsersPage from "../../../pages/UsersPage/UsersPage";
 
 export const router = createBrowserRouter([
     {
@@ -40,6 +41,11 @@ export const router = createBrowserRouter([
             {
                 path: 'albums/:id/photos',
                 element: <PhotosPage />,
+                errorElement: <h2>error</h2>
+            },
+            {
+                path: 'users',
+                element: <UsersPage />,
                 errorElement: <h2>error</h2>
             },
         ]
