@@ -1,5 +1,5 @@
 import type { UseGetPostsQueryResult } from './model/interfaces';
-import type { Post } from '../../entities/post/model/interfaces';
+import type { Post } from '../../entities/post/model/types';
 import PostCard from '../../entities/post/ui/PostCard';
 import styles from './postList.module.css';
 import sharedStyles from '../../shared/ui/shared.module.css';
@@ -51,7 +51,7 @@ export default function PostListContainer() {
 
     }, [debouncedSymbolCount, isLoading, posts, filterPostsByLength]);
 
-    const updatePostList = useCallback((newPosts: Post[] | undefined) => {
+    const updatePostList = useCallback((newPosts: Post[]) => {
 
         setPostList(newPosts);
 

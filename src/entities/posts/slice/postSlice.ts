@@ -1,5 +1,5 @@
 import { createEntityAdapter, createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { Post } from '../../post/model/interfaces';
+import type { Post } from '../../post/model/types';
 
 const postsAdapter = createEntityAdapter({
     selectId: (post: Post) => post.id,

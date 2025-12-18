@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import type { Post } from "../model/interfaces";
+import type { Post } from "../model/types";
 import styles from './postCard.module.css'
 import sharedStyles from '../../../shared/ui/shared.module.css'
 
