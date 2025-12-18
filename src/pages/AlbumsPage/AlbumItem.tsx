@@ -1,6 +1,6 @@
 import { useGetUserAlbumsQuery } from "../../entities/albums/api/albumsApi";
 import { useMemo } from "react";
-import type { Album } from "./model/interfaces";
+import type { Album } from "../../entities/albums/model/types";
 import sharedStyles from '../../shared/ui/shared.module.css'
 
 export default function AlbumItem ({id} : {id: number}) {

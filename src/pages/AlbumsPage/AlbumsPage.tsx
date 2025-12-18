@@ -2,6 +2,7 @@ import { NavLink, useParams } from "react-router-dom";
 import albums from "./lib/links";
 import { useCallback, useMemo } from "react";
 import AlbumItem from "./AlbumItem";
+import type { AlbumLinks } from './lib/links';
 import sharedStyles from '../../shared/ui/shared.module.css';
 
 
@@ -9,7 +10,7 @@ export default function AlbumPage() {
 
     const params = useParams();
 
-    const albumsList = useMemo(() => {
+    const albumsList: AlbumLinks[] = useMemo(() => {
         return albums
     }, [])
 
@@ -20,7 +21,7 @@ export default function AlbumPage() {
     return (
         <>
             <div className={sharedStyles.linksWrapper}>
-                {albumsList.map((album) => {
+                {albumsList.map((album: AlbumLinks) => {
                     return <p key={album.id}>
                                 <NavLink to={album.to} className={getNavLinkClassName}>
                                     {album.text}
