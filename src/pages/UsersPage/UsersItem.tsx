@@ -1,4 +1,4 @@
-import type { User } from './model/interfaces'
+import type { User } from '../../entities/user/model/types'
 
 export default function UsersItem ({userData} : {userData: User}) {
 
