@@ -18,7 +18,7 @@ export default function PostPage() {
 
             {isLoading && <h2 className={sharedStyles.centralTitle}>Идет загрузка! Пожалуйста, подождите!</h2>}
 
-            {!isLoading && !error && <PostCard postInfo={post}/>}
+            {!isLoading && !error && post && <PostCard postInfo={post}/>}
 
             <div className={styles.centralLink}>
                 <Link to='/posts' className={sharedStyles.Link}>Назад</Link>

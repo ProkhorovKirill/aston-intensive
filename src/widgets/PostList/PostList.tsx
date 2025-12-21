@@ -1,4 +1,3 @@
-import type { UseGetPostsQueryResult } from './model/interfaces';
 import type { Post } from '../../entities/post/model/types';
 import PostCard from '../../entities/post/ui/PostCard';
 import styles from './postList.module.css';
@@ -33,7 +32,7 @@ const PostListWithLoading = WithLoading(PostList);
 
 export default function PostListContainer() {
 
-    let {data: posts, error, isLoading}: UseGetPostsQueryResult = usePosts();
+    let {data: posts, error, isLoading} = usePosts();
     
     const [postList, setPostList] = useState(posts);
 
@@ -59,9 +58,9 @@ export default function PostListContainer() {
 
     useEffect(() => {
 
-        if (debouncedSymbolCount && !isLoading) {
+        if (debouncedSymbolCount && !isLoading && filteredPosts) {
             updatePostList(filteredPosts);
-        } else if (!isLoading) {
+        } else if (!isLoading && posts) {
             updatePostList(posts);
         }
 
