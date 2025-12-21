@@ -1,10 +1,18 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { baseUrl } from "../../../shared/lib/baseURL/baseURL";
 import { upsertPosts } from "../slice/postSlice";
+import type { ItemList } from "../../../shared/ui/ItemList/ItemList";
+import type { Post } from "../../post/model/types";
 
 interface DefaultQueryParams {
     _limit: number,
     _page: number,
+}
+
+interface NewPost {
+    title: string,
+    body: string,
+    id: number,
 }
 
 export const postsApi = createApi({
@@ -13,7 +21,7 @@ export const postsApi = createApi({
     tagTypes: ['Post', 'UserPosts'],
     endpoints: (build) => ({
 
-        getPosts: build.query({
+        getPosts: build.query<ItemList<Post>, DefaultQueryParams>({
             query: (params: DefaultQueryParams) => ({
                 url: 'posts',
                 params: {
@@ -29,32 +37,32 @@ export const postsApi = createApi({
                     if (e instanceof Error) console.error(e.message);
                 }
             },
-            providesTags: (result) => {
-                return result ? [...result.map(({id} : {id: string}) => 
-                    ({ type: 'Post', id })), { type: 'Post', id: 'LIST'},]
-                : [{type: 'Post', id: 'POSTS_LIST'}]
+            providesTags: (result: ItemList<Post> | undefined) => {
+                return result ? [...result.map((post: Post) => 
+                    ({ type: 'Post' as const, id: post.id })), { type: 'Post' as const, id: 'LIST'},]
+                : [{type: 'Post' as const, id: 'POSTS_LIST'}]
             }
         }),
 
-        getPostById: build.query({
+        getPostById: build.query<Post, number>({
             query: (id: number) => ({
                 url: `posts/${id}`,
             }),
-            providesTags: (result, error, id) => result && !error ? 
-                            [{type: 'Post', id}] : []
+            providesTags: (result: Post | undefined, error, id: number) => result && !error ? 
+                            [{type: 'Post' as const, id}] : []
         }),
 
-        getPostsByUserId: build.query({
+        getPostsByUserId: build.query<ItemList<Post>, number>({
             query: (id: number) => ({
                 url: `users/${id}/posts`,
             }),
-            providesTags: (result, error, id) => result && !error ? 
+            providesTags: (result: ItemList<Post> | undefined, error, id) => result && !error ? 
                             [{type: 'UserPosts', id}, 
                             {type: "Post", id: 'POSTS_LIST'}] : [],
         }),
 
-        addPost: build.mutation({
-            query: (newPost) => ({
+        addPost: build.mutation<Post, NewPost>({
+            query: (newPost: NewPost) => ({
                 url: 'posts',
                 method: 'POST',
                 body: newPost,
@@ -63,15 +71,15 @@ export const postsApi = createApi({
                             [{type: 'Post', id: 'POSTS_LIST'}] : []
         }),
 
-        updatePost: build.mutation({
-            query: ({id, updatedData}) => ({
-                url: `posts/${id}`,
+        updatePost: build.mutation<Post, NewPost>({
+            query: (newPost: NewPost) => ({
+                url: `posts/${newPost.id}`,
                 method: 'PATCH',
-                body: updatedData
+                body: newPost
             }),
-            invalidatesTags: (result, error, id) => result && !error ? 
-                            [{type: 'Post', id}, {type: 'Post', id: 'LIST'}] : 
-                            [{type: 'Post', id: 'POSTS_LIST'}]
+            invalidatesTags: (result, error, newPost) => result && !error ? 
+                            [{type: 'Post' as const, id: newPost.id}, {type: 'Post' as const, id: 'LIST'}] : 
+                            [{type: 'Post' as const, id: 'POSTS_LIST'}]
         })
 
     })
