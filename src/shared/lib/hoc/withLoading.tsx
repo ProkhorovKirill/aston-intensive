@@ -20,8 +20,6 @@ export default function WithLoading(WrappedComponent : React.FC<any>) {
 
         )
         
-        
-
     }
 
 }

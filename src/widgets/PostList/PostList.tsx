@@ -1,13 +1,14 @@
-import type { Post } from '../../entities/post/model/types';
-import PostCard from '../../entities/post/ui/PostCard';
+import type { Post } from '@/entities/post/model/types';
+import PostCard from '@/entities/post/ui/PostCard';
 import styles from './postList.module.css';
-import sharedStyles from '../../shared/ui/shared.module.css';
+import sharedStyles from '@/shared/ui/shared.module.css';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import WithLoading from '../../shared/lib/hoc/withLoading';
-import useFilterByLength from '../../shared/lib/filterByLength/useFilterByLength';
-import usePosts from '../../features/PostList/model/hooks/usePosts';
+import WithLoading from '@/shared/lib/hoc/withLoading';
+import useFilterByLength from '@/shared/lib/filterByLength/useFilterByLength';
+import usePosts from '@/features/PostList/model/hooks/usePosts';
+import type { ItemList } from '@/shared/ui/ItemList/ItemList';
 
-function PostList({posts, error} : {posts: Post[], error: any}) {
+function PostList({posts, error} : {posts: Post[], error: Error}) {
 
     return (
         <>
@@ -32,13 +33,13 @@ const PostListWithLoading = WithLoading(PostList);
 
 export default function PostListContainer() {
 
-    let {data: posts, error, isLoading} = usePosts();
+    const {data: posts, error, isLoading} = usePosts();
     
-    const [postList, setPostList] = useState(posts);
+    const [postList, setPostList] = useState<ItemList<Post>>(posts);
 
     const {debouncedSymbolCount, filterPostsByLength} = useFilterByLength();
 
-    const filteredPosts = useMemo(() => {
+    const filteredPosts = useMemo<ItemList<Post>>(() => {
 
         if (debouncedSymbolCount && !isLoading && posts) {
 
@@ -48,9 +49,9 @@ export default function PostListContainer() {
 
         return posts;
 
-    }, [debouncedSymbolCount, isLoading, posts, filterPostsByLength]);
+    }, [debouncedSymbolCount, isLoading, posts]);
 
-    const updatePostList = useCallback((newPosts: Post[]) => {
+    const updatePostList = useCallback((newPosts: ItemList<Post>) => {
 
         setPostList(newPosts);
 
@@ -64,7 +65,7 @@ export default function PostListContainer() {
             updatePostList(posts);
         }
 
-    }, [debouncedSymbolCount, isLoading, filteredPosts, posts, updatePostList])
+    }, [debouncedSymbolCount, isLoading, filteredPosts, posts])
 
     const postListProps = useMemo(() => ({
 

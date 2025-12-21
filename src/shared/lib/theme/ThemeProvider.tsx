@@ -1,15 +1,15 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, type PropsWithChildren } from "react";
 
 type Theme = 'light' | 'dark';
 
-interface ThemeContextType {
+export interface ThemeContextType {
   theme: Theme,
   toggleTheme: () => void,
 }
 
 export const ThemeContext = createContext<ThemeContextType | null>(null);
 
-export default function ThemeProvider({children} : {children: React.ReactNode}) {
+export default function ThemeProvider({children} : PropsWithChildren) {
 
     const savedTheme = localStorage.getItem('theme') as Theme | null;
 

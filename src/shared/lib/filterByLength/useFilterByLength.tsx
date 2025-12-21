@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { Filter } from "../../../features/PostLengthFilter/ui/PostLengthFilter";
+import { Filter } from "@/features/PostLengthFilter/ui/PostLengthFilter";
+import type { FilterProviderProps } from "@/features/PostLengthFilter/model/interfaces";
 
-export default function useFilterByLength() {
+export default function useFilterByLength(): FilterProviderProps {
 
-    const context = useContext(Filter);
+    const context = useContext<FilterProviderProps | null>(Filter);
 
     if (context === null) {
 

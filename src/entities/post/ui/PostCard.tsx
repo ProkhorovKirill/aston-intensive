@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import type { Post } from "../model/types";
+import type { PostInfo } from "../model/types";
 import styles from './postCard.module.css'
-import sharedStyles from '../../../shared/ui/shared.module.css'
+import sharedStyles from '@/shared/ui/shared.module.css'
 
-export default function PostCard({postInfo} : {postInfo: Post}) {
+export default function PostCard({postInfo} : PostInfo) {
 
     return (
         <div className={styles.postCard}>

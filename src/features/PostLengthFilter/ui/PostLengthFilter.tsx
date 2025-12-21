@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, type PropsWithChildren } from "react";
 import useDebounce from "../lib/filterByLength";
 import { filterPostsByLength } from "../lib/filterByLength";
 import type { FilterProviderProps } from "../model/interfaces";
@@ -6,11 +6,11 @@ import styles from './postLengthFilter.module.css'
 
 export const Filter = createContext<FilterProviderProps | null>(null);
 
-export default function PostLengthFilter({children}: {children: React.ReactNode}) {
+export default function PostLengthFilter({children}: PropsWithChildren) {
 
     const [maxSymbolCount, setMaxSymbolCount] = useState<number | string>('');
     const debouncedSymbolCount = useDebounce({value: Number(maxSymbolCount) || 0, delay: 200});
-    const [inputError, setInputError] = useState('');
+    const [inputError, setInputError] = useState<string>('');
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
 

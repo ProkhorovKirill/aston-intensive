@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { baseUrl } from "../../../shared/lib/baseURL/baseURL";
-import type { ItemList } from "../../../shared/ui/ItemList/ItemList";
+import { baseUrl } from "@/shared/lib/baseURL/baseURL";
+import type { ItemList } from "@/shared/ui/ItemList/ItemList";
 import type { User } from "../model/types";
 
 export const usersApi = createApi({

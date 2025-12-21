@@ -1,5 +1,5 @@
-import { useGetUsersQuery } from '../../entities/user/api/usersApi';
-import sharedStyles from '../../shared/ui/shared.module.css';
+import { useGetUsersQuery } from '@/entities/user/api/usersApi';
+import sharedStyles from '@/shared/ui/shared.module.css';
 import type { User } from '@/entities/user/model/types';
 import UsersItem from './UsersItem';
 

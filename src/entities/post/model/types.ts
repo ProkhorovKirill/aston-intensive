@@ -4,3 +4,7 @@ export interface Post {
     title: string,
     userId: number,
 };
+
+export interface PostInfo {
+    postInfo: Post,
+}

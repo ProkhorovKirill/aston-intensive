@@ -1,12 +1,13 @@
 import { Link, useParams } from "react-router-dom";
-import { useGetPostByIdQuery } from "../../entities/posts/api/postsApi";
-import PostCard from "../../entities/post/ui/PostCard";
-import sharedStyles from '../../shared/ui/shared.module.css'
+import { useGetPostByIdQuery } from "@/entities/posts/api/postsApi";
+import PostCard from "@/entities/post/ui/PostCard";
+import sharedStyles from '@/shared/ui/shared.module.css'
 import styles from './postPage.module.css'
 
 export default function PostPage() {
 
-    const urlParams = useParams();
+    const urlParams = useParams<{id: string}>();
+
     const {data: post, error, isLoading} = useGetPostByIdQuery(Number(urlParams.id));
 
     return (

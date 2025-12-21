@@ -1,14 +1,15 @@
 import { NavLink, useParams } from "react-router-dom";
 import userPosts from './lib/links';
 import { useCallback, useMemo } from "react";
-import sharedStyles from '../../shared/ui/shared.module.css';
+import type { UserPostsLinks } from "./lib/links";
 import UserPostsItem from "./UserPostsItem";
+import sharedStyles from '@/shared/ui/shared.module.css';
 
 export default function UserPostsPage() {
 
-    const params = useParams();
+    const params = useParams<{id: string}>();
 
-    const UserPostsList = useMemo(() => {
+    const UserPostsList: UserPostsLinks[] = useMemo(() => {
         return userPosts
     }, [])
 
@@ -19,7 +20,7 @@ export default function UserPostsPage() {
     return (
         <>
             <div className={sharedStyles.linksWrapper}>
-                {UserPostsList.map((userPost) => {
+                {UserPostsList.map((userPost: UserPostsLinks) => {
                     return <p key={userPost.id}>
                                 <NavLink to={userPost.to} className={getNavLinkClassName}>
                                     {userPost.text}

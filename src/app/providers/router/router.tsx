@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../../../shared/layouts/MainLayout";
-import PostListPage from "../../../pages/PostListPage/PostListPage";
-import PostPage from "../../../pages/PostPage/PostPage";
-import AlbumsPage from "../../../pages/AlbumsPage/AlbumsPage";
-import TodosPage from "../../../pages/TodosPages/TodosPage";
-import UserPostsPage from "../../../pages/UserPostsPage/UserPostsPage";
-import PhotosPage from "../../../pages/PhotosPage/PhotosPage";
-import UsersPage from "../../../pages/UsersPage/UsersPage";
+import MainLayout from "@/shared/layouts/MainLayout";
+import PostListPage from "@/pages/PostListPage/PostListPage";
+import PostPage from "@/pages/PostPage/PostPage";
+import AlbumsPage from "@/pages/AlbumsPage/AlbumsPage";
+import TodosPage from "@/pages/TodosPages/TodosPage";
+import UserPostsPage from "@/pages/UserPostsPage/UserPostsPage";
+import PhotosPage from "@/pages/PhotosPage/PhotosPage";
+import UsersPage from "@/pages/UsersPage/UsersPage";
 
 export const router = createBrowserRouter([
     {

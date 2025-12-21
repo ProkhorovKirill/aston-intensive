@@ -3,19 +3,19 @@ import albums from "./lib/links";
 import { useCallback, useMemo } from "react";
 import AlbumItem from "./AlbumItem";
 import type { AlbumLinks } from './lib/links';
-import sharedStyles from '../../shared/ui/shared.module.css';
+import sharedStyles from '@/shared/ui/shared.module.css';
 
 
 export default function AlbumPage() {
 
-    const params = useParams();
+    const params = useParams<{id: string}>();
 
     const albumsList: AlbumLinks[] = useMemo(() => {
         return albums
     }, [])
 
-    const getNavLinkClassName = useCallback(
-        ({ isActive }: { isActive: boolean }): string => 
+    const getNavLinkClassName: ({ isActive }: { isActive: boolean }) => string = useCallback(
+        ({ isActive }) => 
             isActive ? `${sharedStyles.activeLink}` : `${sharedStyles.Link}`, []);
 
     return (

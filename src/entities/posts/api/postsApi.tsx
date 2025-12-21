@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { baseUrl } from "../../../shared/lib/baseURL/baseURL";
+import { baseUrl } from "@/shared/lib/baseURL/baseURL";
 import { upsertPosts } from "../slice/postSlice";
-import type { ItemList } from "../../../shared/ui/ItemList/ItemList";
+import type { ItemList } from "@/shared/ui/ItemList/ItemList";
 import type { Post } from "../../post/model/types";
 
 interface DefaultQueryParams {
