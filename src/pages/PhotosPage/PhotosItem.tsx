@@ -1,13 +1,13 @@
-import { useGetPhotosQuery } from "../../entities/albums/api/albumsApi";
-import { useMemo } from "react";
-import sharedStyles from '../../shared/ui/shared.module.css';
-import type { Photo } from "./model/interfaces";
+import { useGetPhotosQuery } from "@/entities/albums/api/albumsApi";
+import { useMemo, type JSX } from "react";
+import sharedStyles from '@/shared/ui/shared.module.css';
+import type { Photo } from "@/entities/photo/model/types";
 
 export default function PhotosItem ({id} : {id: number}) {
 
     const {data: photos, isFetching, error, isLoading} = useGetPhotosQuery(id);
     
-    const photosList = useMemo(() => {
+    const photosList: JSX.Element | null = useMemo(() => {
         
         if (!photos?.length) return null
 

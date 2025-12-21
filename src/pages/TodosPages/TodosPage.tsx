@@ -1,19 +1,20 @@
 import { NavLink, useParams } from "react-router-dom";
 import todos from './lib/links';
 import { useCallback, useMemo } from "react";
-import sharedStyles from '../../shared/ui/shared.module.css';
 import TodosItem from "./TodosItem";
+import type { TodosLinks } from "./lib/links";
+import sharedStyles from '@/shared/ui/shared.module.css';
 
 export default function TodosPage() {
 
-    const params = useParams();
+    const params = useParams<{id: string}>();
 
-    const todosList = useMemo(() => {
+    const todosList: TodosLinks[] = useMemo(() => {
         return todos
     }, [])
 
-    const getNavLinkClassName = useCallback(
-        ({ isActive }: { isActive: boolean }): string => 
+    const getNavLinkClassName: ({isActive}: {isActive: boolean}) => string = useCallback(
+        ({ isActive }) => 
             isActive ? `${sharedStyles.activeLink}` : `${sharedStyles.Link}`, []);
 
     return (

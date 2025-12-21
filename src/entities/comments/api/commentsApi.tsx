@@ -1,9 +1,15 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { baseUrl } from "../../../shared/lib/baseURL/baseURL";
+import { baseUrl } from "@/shared/lib/baseURL/baseURL";
+import type { ItemList } from "@/shared/ui/ItemList/ItemList";
+import type { Comment } from "../model/types";
 
 interface DefaultQueryParams {
     _limit: number,
     _page: number,
+}
+
+interface NewComment {
+    title: string,
 }
 
 export const commentsApi = createApi({
@@ -13,7 +19,7 @@ export const commentsApi = createApi({
     tagTypes: ['Comment'],
     endpoints: (build) => ({
 
-        getComments: build.query({
+        getComments: build.query<ItemList<Comment>, DefaultQueryParams>({
             query: (params: DefaultQueryParams) => ({
                 url: 'comments',
                 params: {
@@ -21,22 +27,22 @@ export const commentsApi = createApi({
                     _page: params._page || 1,
                 }
             }),
-            providesTags: (result) => {
-                return result ? [...result.map(({id}: {id: string}) => 
-                            ({type: 'Comment', id})), 
-                            {type: 'Comment', id: 'COMMENTS_LIST'}] 
-                            : [{type: 'Comment', id: 'COMMENTS_LIST'}]
+            providesTags: (result: ItemList<Comment> | undefined) => {
+                return result ? [...result.map((comment: Comment) => 
+                            ({type: 'Comment' as const, id: comment.id})), 
+                            {type: 'Comment' as const, id: 'COMMENTS_LIST'}] 
+                            : [{type: 'Comment' as const, id: 'COMMENTS_LIST'}]
             }
         }),
 
-        addComment: build.mutation({
-            query: (newCommentData) => ({
+        addComment: build.mutation<ItemList<Comment>, NewComment>({
+            query: (newCommentData: NewComment) => ({
                 url: 'comment',
                 method: 'POST',
                 body: newCommentData,
             }),
-            invalidatesTags: (result, error) => result && !error ? 
-                                [{type: 'Comment', id: 'COMMENTS_LIST'}] : []
+            invalidatesTags: (result: ItemList<Comment> | undefined, error) => result && !error ? 
+                                [{type: 'Comment' as const, id: 'COMMENTS_LIST'}] : []
         })
 
     })

@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom';
 import styles from './modal.module.css'
 import useScrollLock from '../lib/scrollLock/useScrollLock';
+import type { PropsWithChildren } from 'react';
 
 interface ModalProps {
     isOpen: boolean,
@@ -33,18 +34,14 @@ export default function Modal({isOpen, onClose, children} : ModalProps) {
 
 }
 
-interface SubcomponentsProps {
-    children: React.ReactNode,
-}
-
-Modal.Header = function ModalHeader({children} : SubcomponentsProps) {
+Modal.Header = function ModalHeader({children} : PropsWithChildren) {
     return <div>{children}</div>
 }
 
-Modal.Body = function ModalBody({children} : SubcomponentsProps) {
+Modal.Body = function ModalBody({children} : PropsWithChildren) {
     return <div>{children}</div>
 }
 
-Modal.Footer = function ModalFooter({children} : SubcomponentsProps) {
+Modal.Footer = function ModalFooter({children} : PropsWithChildren) {
     return <div>{children}</div>
 }

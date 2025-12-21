@@ -1,5 +1,5 @@
 import { createEntityAdapter, createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { User } from '../../../../pages/UsersPage/model/interfaces';
+import type { User } from '@/entities/user/model/types';
 
 const usersAdapter = createEntityAdapter({
     selectId: (user: User) => user.id,

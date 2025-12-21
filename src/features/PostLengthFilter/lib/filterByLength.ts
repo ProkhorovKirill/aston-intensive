@@ -1,4 +1,4 @@
-import type { Post } from "../../../entities/post/model/interfaces";
+import type { Post } from "@/entities/post/model/types";
 import type { DebouceProps } from "../model/interfaces";
 import { useState, useEffect } from "react";
 

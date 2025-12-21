@@ -1,13 +1,13 @@
-import { useGetPostsByUserIdQuery } from "../../entities/posts/api/postsApi";
-import { useMemo } from "react";
-import sharedStyles from '../../shared/ui/shared.module.css';
+import { useGetPostsByUserIdQuery } from "@/entities/posts/api/postsApi";
+import { useMemo, type JSX } from "react";
+import sharedStyles from '@/shared/ui/shared.module.css';
 import type { UserPost } from "./model/interfaces";
 
 export default function UserPostsItem ({id} : {id: number}) {
 
     const {data: userPost, isFetching, error, isLoading} = useGetPostsByUserIdQuery(id);
     
-    const userPostList = useMemo(() => {
+    const userPostList: JSX.Element | null = useMemo(() => {
         
         if (!userPost?.length) return null
 

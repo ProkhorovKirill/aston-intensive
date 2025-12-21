@@ -1,10 +1,10 @@
-import { useGetCommentsQuery } from "../../../entities/comments/api/commentsApi";
-import WithLoading from "../../../shared/lib/hoc/withLoading";
-import type { CommentListProps } from "../model/interfaces";
+import { useGetCommentsQuery } from "@/entities/comments/api/commentsApi";
+import WithLoading from "@/shared/lib/hoc/withLoading";
+import type { CommentListProps } from "../model/types";
 import React, { useCallback, useState } from "react";
-import Button from "../../../shared/ui/Button";
-import sharedStyles from '../../../shared/ui/shared.module.css'
-import styles from './commentList.module.css'
+import Button from "@/shared/ui/Button";
+import sharedStyles from '@/shared/ui/shared.module.css';
+import styles from './commentList.module.css';
 
 
 function CommentList({comments, error}: CommentListProps) {

@@ -1,13 +1,13 @@
-import { useGetUserAlbumsQuery } from "../../entities/albums/api/albumsApi";
-import { useMemo } from "react";
-import type { Album } from "./model/interfaces";
-import sharedStyles from '../../shared/ui/shared.module.css'
+import { useGetUserAlbumsQuery } from "@/entities/albums/api/albumsApi";
+import { useMemo, type JSX } from "react";
+import type { Album } from "@/entities/albums/model/types";
+import sharedStyles from '@/shared/ui/shared.module.css'
 
 export default function AlbumItem ({id} : {id: number}) {
 
     const {data: albums, isFetching, error, isLoading} = useGetUserAlbumsQuery(id);
 
-    const albumsList = useMemo(() => {
+    const albumsList: JSX.Element | null = useMemo(() => {
         
         if (!albums?.length) return null
 

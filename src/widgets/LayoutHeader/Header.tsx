@@ -1,9 +1,9 @@
 import { useState } from "react";
-import ThemeSwitcher from "../../features/ThemeSwitcher/ui/ThemeSwitcher";
+import ThemeSwitcher from "@/features/ThemeSwitcher/ui/ThemeSwitcher";
 import styles from './header.module.css'
-import modalStyles from '../../shared/ui/modal.module.css'
-import Button from "../../shared/ui/Button";
-import Modal from "../../shared/ui/Modal";
+import modalStyles from '@/shared/ui/modal.module.css'
+import Button from "@/shared/ui/Button";
+import Modal from "@/shared/ui/Modal";
 
 export default function Header() {
 

@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { postsApi } from "../../../entities/posts/api/postsApi";
-import { commentsApi } from "../../../entities/comments/api/commentsApi";
-import { albumsApi } from "../../../entities/albums/api/albumsApi";
-import { todosApi } from "../../../entities/todos/api/todosApi";
-import { usersApi } from "../../../entities/user/api/usersApi";
-import postReducer from '../../../entities/posts/slice/postSlice';
-import userReducer from '../../../entities/user/model/slice/userSlice';
+import { postsApi } from "@/entities/posts/api/postsApi";
+import { commentsApi } from "@/entities/comments/api/commentsApi";
+import { albumsApi } from "@/entities/albums/api/albumsApi";
+import { todosApi } from "@/entities/todos/api/todosApi";
+import { usersApi } from "@/entities/user/api/usersApi";
+import postReducer from '@/entities/posts/slice/postSlice';
+import userReducer from '@/entities/user/model/slice/userSlice';
 
 export const store = configureStore({
     reducer: {

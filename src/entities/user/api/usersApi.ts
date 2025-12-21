@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { baseUrl } from "../../../shared/lib/baseURL/baseURL";
+import { baseUrl } from "@/shared/lib/baseURL/baseURL";
+import type { ItemList } from "@/shared/ui/ItemList/ItemList";
+import type { User } from "../model/types";
 
 export const usersApi = createApi({
     reducerPath: 'usersApi',
@@ -7,15 +9,15 @@ export const usersApi = createApi({
     tagTypes: ['user'],
     endpoints: (build) => ({
 
-        getUsers: build.query({
+        getUsers: build.query<ItemList<User>, void>({
             query: () => ({
                 url: `users`,
             }),
-            providesTags: (result) => {
+            providesTags: (result: ItemList<User> | undefined) => {
                 return result ? [
-                    ...result.map(({id}: {id: string}) => 
-                        ({type: 'user', id}),
-                        {type: 'user', id: 'USER_LIST'}
+                    ...result.map((user: User) => 
+                        ({type: 'user' as const, id: user.id}),
+                        {type: 'user' as const, id: 'USER_LIST'}
                     )
                 ] : 
                 [{type: 'user', id: 'USER_LIST'}]

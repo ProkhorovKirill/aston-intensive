@@ -1,5 +1,5 @@
-import useTheme from "../../../shared/lib/theme/useTheme";
-import Button from "../../../shared/ui/Button";
+import useTheme from "@/shared/lib/theme/useTheme";
+import Button from "@/shared/ui/Button";
 import styles from './themeSwitcher.module.css'
 
 export default function ThemeSwitcher() {
