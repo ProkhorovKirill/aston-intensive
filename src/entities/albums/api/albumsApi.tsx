@@ -4,6 +4,12 @@ import type { ItemList } from "../../../shared/ui/ItemList/ItemList";
 import type { Album } from "../model/types";
 import type { Photo } from "../../photo/model/types";
 
+interface NewAlbum {
+    title: string,
+    body: string,
+    id: number,
+}
+
 export const albumsApi = createApi({
     reducerPath: 'albumsApi',
     baseQuery: fetchBaseQuery({baseUrl}),
@@ -43,24 +49,24 @@ export const albumsApi = createApi({
             }
         }),
 
-        addAlbum: build.mutation({
-            query: (newAlbumData) => ({
+        addAlbum: build.mutation<Album, NewAlbum>({
+            query: (newAlbum: NewAlbum) => ({
                 url: 'albums',
                 method: 'POST',
-                body: newAlbumData,
+                body: newAlbum,
             }),
             invalidatesTags: (result, error) => result && !error ? 
-                                [{type: 'userAlbum', id: 'ALBUMS_LIST'}] : []
+                                [{type: 'userAlbum' as const, id: 'ALBUMS_LIST'}] : []
         }),
 
-        addPhoto: build.mutation({
+        addPhoto: build.mutation<Album, NewAlbum>({
             query: (newPhoto) => ({
                 url: 'albums',
                 method: 'POST',
                 body: newPhoto,
             }),
             invalidatesTags: (result, error) => result && !error ? 
-                                [{type: 'album', id: 'ALBUMS_LIST'}] : []
+                                [{type: 'album' as const, id: 'ALBUMS_LIST'}] : []
         }),
 
     })
