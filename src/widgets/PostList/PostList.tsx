@@ -33,7 +33,7 @@ const PostListWithLoading = WithLoading(PostList);
 
 export default function PostListContainer() {
 
-    let {data: posts, error, isLoading}: UseGetPostsQueryResult = useGetPostsQuery({_limit: 5, _page: 1});
+    const {data: posts, error, isLoading}: UseGetPostsQueryResult = useGetPostsQuery({_limit: 5, _page: 1});
     
     const [postList, setPostList] = useState(posts);
 
@@ -49,7 +49,7 @@ export default function PostListContainer() {
 
         return posts;
 
-    }, [debouncedSymbolCount, isLoading, posts, filterPostsByLength]);
+    }, [debouncedSymbolCount, isLoading, posts]);
 
     const updatePostList = useCallback((newPosts: Post[] | undefined) => {
 

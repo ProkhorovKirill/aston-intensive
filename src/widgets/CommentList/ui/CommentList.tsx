@@ -40,7 +40,7 @@ export default function CommentListContainer({id} : {id: number}) {
 
     const handleToggleComments = useCallback(() => {
         setIsOpen(prev => !prev);
-    }, [isOpen]);
+    }, []);
 
     return (
 
