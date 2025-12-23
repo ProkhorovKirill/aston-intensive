@@ -33,9 +33,9 @@ function CommentList({comments, error}: CommentListProps) {
 
 const CommentListWithLoading = WithLoading(CommentList);
 
-export default function CommentListContainer() {
+export default function CommentListContainer({id} : {id: number}) {
 
-    const {data: comments, error, isLoading} = useGetCommentsQuery({_limit: 5, _page:1});
+    const {data: comments, error, isLoading} = useGetCommentsQuery({_limit: 5, _page:1, id});
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     const handleToggleComments = useCallback(() => {

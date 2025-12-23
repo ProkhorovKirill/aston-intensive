@@ -1,5 +1,6 @@
 import type { Post } from "../model/interfaces";
-import styles from './postCard.module.css'
+import styles from './postCard.module.css';
+import CommentListContainer from "../../../widgets/CommentList/ui/CommentList";
 
 export default function PostCard({postInfo} : {postInfo: Post}) {
 
@@ -7,6 +8,7 @@ export default function PostCard({postInfo} : {postInfo: Post}) {
         <div className={styles.postCard}>
             <h4 className={styles.postCardTitle}>Заголовок: {postInfo.title}</h4>
             <p className={styles.postCardBody}>{postInfo.body}</p>
+            <CommentListContainer id={postInfo.id}/>
         </div>
     )
 

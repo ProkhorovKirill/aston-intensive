@@ -19,8 +19,8 @@ export const postsListApi = createApi({
             }),
         }),
         getComments: build.query({
-            query: (params: DefaultQueryParams) => ({
-                url: 'comments',
+            query: (params: DefaultQueryParams & {id: number}) => ({
+                url: `comments?postId=${params.id}`,
                 params: {
                     _limit: params._limit || 5,
                     _page: params._page || 1,
