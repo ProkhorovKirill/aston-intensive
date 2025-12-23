@@ -8,6 +8,8 @@ export default function UserPostsPage() {
 
     const params = useParams();
 
+    const id: number = Number(params.id) || 1;
+
     const UserPostsList = useMemo(() => {
         return userPosts
     }, [])
@@ -28,7 +30,7 @@ export default function UserPostsPage() {
                 })}
             </div>
             
-            {!isNaN(Number(params.id)) && <UserPostsItem id={Number(params.id)}/>}
+            <UserPostsItem id={id}/>
         </>
     )
 

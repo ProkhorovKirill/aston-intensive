@@ -8,6 +8,8 @@ export default function PhotosPage() {
 
     const params = useParams();
 
+    const id: number = Number(params.id) || 1; 
+
     const photosList = useMemo(() => {
         return photos
     }, [])
@@ -28,7 +30,7 @@ export default function PhotosPage() {
                 })}
             </div>
             
-            {!isNaN(Number(params.id)) && <PhotosItem id={Number(params.id)}/>}
+            <PhotosItem id={id}/>
         </>
     )
 

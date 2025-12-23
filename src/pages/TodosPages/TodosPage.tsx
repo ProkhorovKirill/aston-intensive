@@ -8,6 +8,8 @@ export default function TodosPage() {
 
     const params = useParams();
 
+    const id: number = Number(params.id) || 1;
+
     const todosList = useMemo(() => {
         return todos
     }, [])
@@ -28,7 +30,7 @@ export default function TodosPage() {
                 })}
             </div>
             
-            {!isNaN(Number(params.id)) && <TodosItem id={Number(params.id)}/>}
+            <TodosItem id={id}/>
         </>
     )
 
