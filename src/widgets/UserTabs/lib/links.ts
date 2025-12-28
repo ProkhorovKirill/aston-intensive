@@ -18,22 +18,22 @@ export const links: Links = [
         id: 1,
     },
     {
-        to: 'users/:id/albums',
+        to: 'users/1/albums',
         text: 'Альбомы пользователя',
         id: 2,
     },
     {
-        to: 'users/:id/todos',
+        to: 'users/1/todos',
         text: 'Список задач пользователя',
         id: 3,
     },
     {
-        to: 'users/:id/posts',
+        to: 'users/1/posts',
         text: 'Посты пользователя',
         id: 4,
     },
     {
-        to: 'albums/:id/photos',
+        to: 'albums/1/photos',
         text: 'Фотографии пользователя',
         id: 5,
     },

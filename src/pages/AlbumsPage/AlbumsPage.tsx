@@ -1,5 +1,4 @@
-import { NavLink, useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { NavLink, useParams } from "react-router-dom";
 import albums from "./lib/links";
 import { useCallback, useMemo } from "react";
 import AlbumItem from "./AlbumItem";
@@ -8,17 +7,6 @@ import sharedStyles from '../../shared/ui/shared.module.css';
 export default function AlbumPage() {
 
     const params = useParams();
-    const navigate = useNavigate();
-
-    const id: number = Number(params.id) || 1;
-
-    useEffect(() => {
-
-        if (isNaN(Number(params.id))) {
-            navigate('/users/1/albums', {replace: true});
-        }
-
-    }, [params.id, navigate]);
 
     const albumsList = useMemo(() => {
         return albums
@@ -40,7 +28,7 @@ export default function AlbumPage() {
                 })}
             </div>
             
-            <AlbumItem id={id}/>
+            <AlbumItem id={Number(params.id)}/>
 
         </>
     )

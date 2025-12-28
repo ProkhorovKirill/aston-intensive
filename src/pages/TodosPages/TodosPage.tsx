@@ -1,23 +1,12 @@
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import todos from './lib/links';
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import sharedStyles from '../../shared/ui/shared.module.css';
 import TodosItem from "./TodosItem";
 
 export default function TodosPage() {
 
     const params = useParams();
-    const navigate = useNavigate();
-
-    const id: number = Number(params.id) || 1;
-
-    useEffect(() => {
-        
-        if (isNaN(Number(params.id))) {
-            navigate('/users/1/todos', {replace: true});
-        }
-        
-    }, [params.id, navigate]);
 
     const todosList = useMemo(() => {
         return todos
@@ -39,7 +28,7 @@ export default function TodosPage() {
                 })}
             </div>
             
-            <TodosItem id={id}/>
+            <TodosItem id={Number(params.id)}/>
         </>
     )
 
