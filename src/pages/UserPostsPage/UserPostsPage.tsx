@@ -28,7 +28,7 @@ export default function UserPostsPage() {
                 })}
             </div>
             
-            {!isNaN(Number(params.id)) && <UserPostsItem id={Number(params.id)}/>}
+            <UserPostsItem id={Number(params.id)}/>
         </>
     )
 

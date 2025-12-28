@@ -28,7 +28,7 @@ export default function TodosPage() {
                 })}
             </div>
             
-            {!isNaN(Number(params.id)) && <TodosItem id={Number(params.id)}/>}
+            <TodosItem id={Number(params.id)}/>
         </>
     )
 

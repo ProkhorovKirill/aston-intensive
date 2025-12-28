@@ -3,7 +3,6 @@ import albums from "./lib/links";
 import { useCallback, useMemo } from "react";
 import AlbumItem from "./AlbumItem";
 import sharedStyles from '../../shared/ui/shared.module.css';
-// import styles from './albumsPage.module.css'
 
 export default function AlbumPage() {
 
@@ -29,7 +28,7 @@ export default function AlbumPage() {
                 })}
             </div>
             
-            {!isNaN(Number(params.id)) && <AlbumItem id={Number(params.id)}/>}
+            <AlbumItem id={Number(params.id)}/>
 
         </>
     )
