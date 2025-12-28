@@ -1,14 +1,23 @@
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import userPosts from './lib/links';
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import sharedStyles from '../../shared/ui/shared.module.css';
 import UserPostsItem from "./UserPostsItem";
 
 export default function UserPostsPage() {
 
     const params = useParams();
+    const navigate = useNavigate();
 
     const id: number = Number(params.id) || 1;
+
+    useEffect(() => {
+            
+        if (isNaN(Number(params.id))) {
+            navigate('/users/1/posts', {replace: true});
+        }
+            
+    }, [params.id, navigate]);
 
     const UserPostsList = useMemo(() => {
         return userPosts

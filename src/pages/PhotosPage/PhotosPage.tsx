@@ -1,14 +1,23 @@
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import photos from './lib/links';
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import sharedStyles from '../../shared/ui/shared.module.css';
-import PhotosItem from ".//PhotosItem";
+import PhotosItem from "./PhotosItem";
 
 export default function PhotosPage() {
 
     const params = useParams();
+    const navigate = useNavigate();
 
-    const id: number = Number(params.id) || 1; 
+    const id: number = Number(params.id) || 1;
+
+    useEffect(() => {
+    
+        if (isNaN(Number(params.id))) {
+            navigate('/albums/1/photos', {replace: true});
+        }
+    
+    }, [params.id, navigate]);
 
     const photosList = useMemo(() => {
         return photos
